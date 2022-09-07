@@ -4,4 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:text="Choose Bank Memories to read:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/textView1"
+        android:layout_marginLeft="10.0dp"
+        android:layout_marginTop="10.0dp" />
+    <CheckBox
+        android:text="EPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBoxEPC"
+        android:layout_below="@id/textView1"
+        android:layout_alignLeft="@id/textView1" />
+    <CheckBox
+        android:text="TID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBoxTID"
+        android:layout_below="@id/textView1"
+        android:layout_toRightOf="@id/checkBoxEPC"
+        android:layout_marginLeft="20dp" />
+    <CheckBox
+        android:text="UserData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBoxUserData"
+        android:layout_below="@id/textView1"
+        android:layout_toRightOf="@id/checkBoxTID"
+        android:layout_marginLeft="20dp" />
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1"
+        android:layout_below="@id/checkBoxEPC"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/buttonStartStop">
+        <ListView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+            android:id="@+id/resultListView" />
+
+    </ScrollView>
+
+    <Button
+        android:text="Start Reading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonStartStop"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp" />
 </RelativeLayout>
