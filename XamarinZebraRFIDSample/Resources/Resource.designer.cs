@@ -3840,52 +3840,52 @@ namespace XamarinZebraRFIDSample
 			public const int pin = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int progress_circular = 2131230875;
+			public const int progressBar = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int progress_horizontal = 2131230876;
+			public const int progress_circular = 2131230876;
 			
 			// aapt resource value: 0x7F08009D
-			public const int radio = 2131230877;
+			public const int progress_horizontal = 2131230877;
 			
 			// aapt resource value: 0x7F08009E
-			public const int resultListView = 2131230878;
+			public const int radio = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int right = 2131230879;
+			public const int resultListView = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int right_icon = 2131230880;
+			public const int right = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int right_side = 2131230881;
+			public const int right_icon = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int save_non_transition_alpha = 2131230882;
+			public const int right_side = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int save_overlay_view = 2131230883;
+			public const int save_non_transition_alpha = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int screen = 2131230884;
+			public const int save_overlay_view = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int scroll = 2131230885;
+			public const int screen = 2131230885;
+			
+			// aapt resource value: 0x7F0800A6
+			public const int scroll = 2131230886;
 			
 			// aapt resource value: 0x7F0800AA
 			public const int scrollable = 2131230890;
 			
-			// aapt resource value: 0x7F0800A6
-			public const int scrollIndicatorDown = 2131230886;
-			
 			// aapt resource value: 0x7F0800A7
-			public const int scrollIndicatorUp = 2131230887;
+			public const int scrollIndicatorDown = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int scrollView = 2131230888;
+			public const int scrollIndicatorUp = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int scrollView1 = 2131230889;
+			public const int scrollView = 2131230889;
 			
 			// aapt resource value: 0x7F0800AB
 			public const int search_badge = 2131230891;
