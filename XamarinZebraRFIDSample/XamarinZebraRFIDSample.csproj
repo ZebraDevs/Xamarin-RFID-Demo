@@ -69,6 +69,7 @@
     <Compile Include="Model\TagReadData.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagDataAdapter.cs" />
     <Compile Include="ZebraReader\ReaderEventsHandler.cs" />
     <Compile Include="ZebraReader\ZebraReaderInterface.cs" />
   </ItemGroup>
@@ -102,6 +103,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\tag_data_view.xml"/>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

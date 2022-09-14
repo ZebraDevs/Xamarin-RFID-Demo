@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <TextView
+        android:text="EPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic|bold"
+        android:id="@+id/epcTitle"/>
+    <TextView
+        android:text="XXXX_EPC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/epcTextView"
+        android:layout_toRightOf="@id/epcTitle"
+        android:layout_marginLeft="5dp"/>
+    <TextView
+        android:text="TID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic|bold"
+        android:layout_below="@id/epcTextView"
+        android:id="@+id/tidTitle" />
+    <TextView
+        android:text="XXXX_TID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tidTextView"
+        android:textStyle="italic"
+        android:layout_below="@id/epcTextView"
+        android:layout_toRightOf="@id/tidTitle"
+        android:layout_marginLeft="5dp"/>
+    <TextView
+        android:text="USR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="italic|bold"
+        android:layout_below="@id/tidTextView"
+        android:id="@+id/userTitle" />
+    <TextView
+        android:text="XXXX_USER"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userTextView"
+        android:textStyle="italic"
+        android:layout_below="@id/tidTextView"
+        android:layout_toRightOf="@id/userTitle"
+        android:layout_marginLeft="5dp"/>
+</RelativeLayout >

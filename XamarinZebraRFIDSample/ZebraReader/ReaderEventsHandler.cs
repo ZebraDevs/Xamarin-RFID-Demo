@@ -31,9 +31,10 @@ namespace XamarinZebraRFIDSample.ZebraReader
 
         public void EventReadNotify(RfidReadEvents e)
         {
-            var readTagsList = reader.Actions.GetReadTags(100).DefaultIfEmpty().ToList();
-            if (readTagsList.Any())
+            var readTags = reader.Actions.GetReadTags(100);
+            if (readTags != null)
             {
+                var readTagsList = readTags.ToList();
                 var tagReadGroup = readTagsList.GroupBy(x => x.TagID).ToDictionary(grp => grp.Key);
                 foreach (var tagKey in tagReadGroup.Keys)
                 {

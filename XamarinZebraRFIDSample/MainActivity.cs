@@ -22,8 +22,8 @@ namespace XamarinZebraRFIDSample
         CheckBox checkBoxMB;
 
         ZebraReaderInterface readerInterface = null;
-        List<string> tagList = new List<string>();
-        ArrayAdapter<string> tagReadListAdapter;
+        TagDataAdapter tagReadListAdapter;
+        List<TagReadData> tagReadList = new List<TagReadData>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,13 +38,13 @@ namespace XamarinZebraRFIDSample
             checkBoxEPC = FindViewById<CheckBox>(Resource.Id.checkBoxEPC);
             checkBoxEPC.Click += CheckBoxEPC_Click;
             checkBoxTID = FindViewById<CheckBox>(Resource.Id.checkBoxTID);
-            checkBoxEPC.Click += CheckBoxTID_Click;
+            checkBoxTID.Click += CheckBoxTID_Click;
             checkBoxMB = FindViewById<CheckBox>(Resource.Id.checkBoxUserData);
-            checkBoxEPC.Click += CheckBoxMB_Click;
+            checkBoxMB.Click += CheckBoxMB_Click;
 
             var resultListView = FindViewById<ListView>(Resource.Id.resultListView);
-            tagReadListAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, tagList);
-            resultListView.SetAdapter(tagReadListAdapter);
+            tagReadListAdapter = new TagDataAdapter(this, tagReadList);
+            resultListView.Adapter = tagReadListAdapter;
 
             // Init reader interface
             readerInterface = new ZebraReaderInterface();
@@ -77,21 +77,27 @@ namespace XamarinZebraRFIDSample
                     progressBar.Visibility = Android.Views.ViewStates.Visible;
                 });
 
+                bool enableCheckbox = false;
                 if (!readerInterface.IsConnected)
                 {
-                    var result = readerInterface.ConnectReader();
-                    buttonText = result ? "Disconnect Reader" : "Connect Reader";
+                    var connected = readerInterface.ConnectReader();
+                    buttonText = connected ? "Disconnect Reader" : "Connect Reader";
+                    enableCheckbox = !connected;
                 }
                 else
                 {
-                    var result = readerInterface.DisconnectReader();
-                    buttonText = result ? "Connect Reader" : "Disconnect Reader";
+                    var disconnected = readerInterface.DisconnectReader();
+                    buttonText = disconnected ? "Connect Reader" : "Disconnect Reader";
+                    enableCheckbox = disconnected;
                 }
                 this.RunOnUiThread(() =>
                 {
                     buttonConnection.Text = buttonText;
                     buttonConnection.Enabled = true;
                     progressBar.Visibility = Android.Views.ViewStates.Invisible;
+                    checkBoxEPC.Enabled = enableCheckbox;
+                    checkBoxTID.Enabled = enableCheckbox;
+                    checkBoxMB.Enabled = enableCheckbox;
                 });
 
             });
@@ -99,23 +105,16 @@ namespace XamarinZebraRFIDSample
 
         private void OnTagRead(object sender, TagReadData tagReadData)
         {
-            string item = "";
-            if (!string.IsNullOrEmpty(tagReadData.EPC))
-                item = item + "\nEPC: " + tagReadData.EPC;
-            if (!string.IsNullOrEmpty(tagReadData.TID))
-                item = item + "\nTID: " + tagReadData.TID;
-            if (!string.IsNullOrEmpty(tagReadData.UMB))
-                item = item + "\nUser: " + tagReadData.UMB;
-
-            if (item.Length == 0)
+            if (string.IsNullOrEmpty(tagReadData.EPC) &&
+                string.IsNullOrEmpty(tagReadData.TID) &&
+                string.IsNullOrEmpty(tagReadData.UMB))
                 return;
 
-            item.Remove(0, 1); // remove the first \n
-
             this.RunOnUiThread(() =>
-            {
-                tagReadListAdapter.Insert(item, 0);
-            });
+        {
+            tagReadList.Insert(0, tagReadData);
+            tagReadListAdapter.Insert(tagReadData, 0);
+        });
         }
 
         private void ReaderOutputMessage(object sender, string message)

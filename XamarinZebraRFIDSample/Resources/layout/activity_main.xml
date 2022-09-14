@@ -38,7 +38,7 @@
         android:layout_toRightOf="@id/checkBoxTID"
         android:layout_marginLeft="20dp" />
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/resultListView"
         android:layout_below="@id/checkBoxEPC"
