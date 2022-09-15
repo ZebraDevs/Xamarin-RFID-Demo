@@ -137,4 +137,4 @@ public void EventReadNotify(RfidReadEvents e)
 This project welcomes contributions. Pleae check out our Contributing guide to learn more on how to get started.
 
 ## License
-[Zebra EULA](https://github.com/ZebraDevs/About/blob/master/ZEBRA_EULA_LICENSE.md#end-user-license-agreement-unrestricted-software)
+[Zebra EULA](ZEBRA_EULA_LICENSE.md) 
