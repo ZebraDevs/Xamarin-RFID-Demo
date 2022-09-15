@@ -41,6 +41,7 @@ namespace XamarinZebraRFIDSample.ZebraReader
             if (reader != null && reader.IsConnected)
                 return success;
 
+            // Get available readers (you can choose the connection method)
             _availableReaderContainer = new Readers(Android.App.Application.Context, ENUM_TRANSPORT.All);
 
             try
@@ -125,7 +126,6 @@ namespace XamarinZebraRFIDSample.ZebraReader
             reader.Events.SetAttachTagDataWithReadEvent(false);
 
             // Force RFID mode
-
             reader.Config.SetTriggerMode(ENUM_TRIGGER_MODE.RfidMode, true);
         }
 

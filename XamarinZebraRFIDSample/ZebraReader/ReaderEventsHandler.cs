@@ -34,10 +34,14 @@ namespace XamarinZebraRFIDSample.ZebraReader
             var readTags = reader.Actions.GetReadTags(100);
             if (readTags != null)
             {
+                // Group tag by tag id
+                // Each tag might have several TagData (one per each Memory Bank read)
                 var readTagsList = readTags.ToList();
                 var tagReadGroup = readTagsList.GroupBy(x => x.TagID).ToDictionary(grp => grp.Key);
+
                 foreach (var tagKey in tagReadGroup.Keys)
                 {
+                    // Get tag data.
                     var tagValueList = tagReadGroup[tagKey];
                     var myTag = new TagReadData();
                     foreach (TagData tagData in tagValueList)
@@ -47,6 +51,7 @@ namespace XamarinZebraRFIDSample.ZebraReader
                             if (tagData.MemoryBankData.Length == 0)
                                 continue;
 
+                            // Parse MemoryBankData
                             if (tagData.MemoryBank.Ordinal == MEMORY_BANK.MemoryBankEpc.Ordinal)
                                 myTag.EPC = tagData.MemoryBankData;
                             else if (tagData.MemoryBank.Ordinal == MEMORY_BANK.MemoryBankTid.Ordinal)
@@ -85,7 +90,7 @@ namespace XamarinZebraRFIDSample.ZebraReader
             {
                 reader.Config.DPOState = DYNAMIC_POWER_OPTIMIZATION.Disable;
 
-                // Add tag sequence to read each memory as configured.
+                // Add tag sequence to read specific memory banks
                 foreach (MEMORY_BANK bank in memoryBanksToRead)
                 {
                     TagAccess ta = new TagAccess();
